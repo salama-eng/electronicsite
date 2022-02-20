@@ -44,7 +44,7 @@ router.get('/products/:id', async (req, res, next) => {
       `https://dummyjson.com/products/${productId}`
     );
 
-    res.render('product', {
+    res.render('single', {
       product: response.data,
     });
   } catch (err) {
@@ -71,11 +71,6 @@ router.get("/about",(req,res)=>{
 
    
     
-    router.get("/single",(req,res)=>{
-        res.render("single");
-        res.end();
-     });
-
      router.get("/single2",(req,res)=>{
       res.render("single2");
       res.end();
