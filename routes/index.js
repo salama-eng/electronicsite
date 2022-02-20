@@ -4,16 +4,7 @@ const axios = require('axios').default;
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'without title' });
-  try {
-    let response = await axios.get('https://dummyjson.com/products');
-
-    res.render('index', {
-      products: response.data.products,
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  res.render('index');
 });
 
 
@@ -23,20 +14,6 @@ router.get('/products', async (req, res, next) => {
 
     res.render('products', {
       products: response.data.products,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-
-
-router.get('/categories', async (req, res, next) => {
-  try {
-    let response = await axios.get('https://dummyjson.com/products/categories');
-
-    res.render('categories', {
-      categories : response.data
     });
   } catch (err) {
     console.log(err);
@@ -56,7 +33,7 @@ router.get('/products/search', async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    res.send('your search item ot found')
+    res.send('sorry man we have error')
   }
 });
 
@@ -70,10 +47,9 @@ router.get('/products/:id', async (req, res, next) => {
     res.render('single', {
       product: response.data,
     });
-
   } catch (err) {
     console.log(err);
-    res.send('not fount (:')
+    res.send('sorry man we have error')
   }
 });
 
@@ -82,8 +58,6 @@ router.get("/about",(req,res)=>{
   res.render("about");
   res.end();
   });
-
-  
   router.get("/contact",(req,res)=>{
       res.render("contact");
       res.end();
@@ -97,11 +71,6 @@ router.get("/about",(req,res)=>{
 
    
     
-    router.get("/single",(req,res)=>{
-        res.render("single");
-        res.end();
-     });
-
      router.get("/single2",(req,res)=>{
       res.render("single2");
       res.end();
